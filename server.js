@@ -10,7 +10,7 @@ var http = httpModule.Server(app);
 // Tells app that pictures, etc are located in folder 'assets'
 app.use(express.static('assets'));
 
-function respnder(req, res) {
+function responder(req, res) {
   // Sending a file to the user's browser
   res.sendFile(__dirname + '/index.html');
   console.log('got a request');
