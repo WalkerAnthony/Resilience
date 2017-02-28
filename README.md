@@ -2,10 +2,10 @@
 - Team members
 
     - Meredith Elgin
-    - Walker Anthony, 
-    - Maddie Izard,
-    - Cal Parsons,
-    - Anthony McEwen,
+    - Walker Anthony 
+    - Maddie Izard
+    - Cal Parsons
+    - Anthony McEwen
     - Colton Horn 
   
 - Brief description
