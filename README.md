@@ -1,11 +1,11 @@
 # Resilience
 - Team members
 
-    Meredith Elgin
-    Walker Anthony 
-    Maddie Izard
-    Cal Parsons
-    Anthony McEwen
+    Meredith Elgin,
+    Walker Anthony, 
+    Maddie Izard,
+    Cal Parsons,
+    Anthony McEwen,
     Colton Horn 
   
 - Brief description
