@@ -1,0 +1,41 @@
+<html>
+</head>
+
+<script>
+var express = require('express');
+var bodyParser = require('body-parser');
+const MongoClient = require('mongodb').MongoClient
+var path = require('path');
+var modelTools = require('?'); //Need the file path to the database
+
+var app = express();
+var http = require('http').Server(app);
+
+app.use(express.static(path.join(/*dirname*/, 'assets')));
+
+app.use(bodyParser.urlencoded({extended: true}));
+//set view engine of the app to something
+app.set('view engine', );
+
+
+
+// Connect to MongoDB
+// Need the URL or whatever to connect to the database
+MongoClient.connect('', err, database) => {
+  if(err)
+    return console.log(err);
+
+  db = database;
+  updateIds((result)=>{
+    console.log(result);
+  });
+
+  http.listen( port, function () {
+    console.log('Listening on localhost ' + port);
+  });
+});
+</script>
+
+</head>
+
+</html>
