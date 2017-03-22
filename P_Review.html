@@ -31,22 +31,6 @@
         res.render('index', {docs: docs});
       });
     });
-
-    // Connect to MongoDB
-    // Need the URL or whatever to connect to the database
-    MongoClient.connect('', err, database) => {
-      if(err)
-        return console.log(err);
-
-      db = database;
-      updateIds((result)=>{
-        console.log(result);
-      });
-
-      http.listen( port, function () {
-        console.log('Listening on localhost ' + port);
-      });
-    });
   </script>
 
 </body>
