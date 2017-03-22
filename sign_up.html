@@ -8,11 +8,30 @@
 </head>
 
 <body>
-
   <div>
-    <h1 class = "type-center"><center>Sign up to create your Patient Profile:</center></h1>
+    <h1 class = "type-center"><center>Please Enter Your Information for Review:</center></h1>
   </div>
-  <form class = "text-center">
+  <form class = "text-center" action = "/signup" method = "POST">
+    First Name:<br>
+    <input type="text" name="FirstName"><br><br>
+    Last Name:<br>
+    <input type="text" name="LastName"><br><br>
+    Diagnosis:<br>
+    <input type="text" name="Diagnosis"><br><br>
+    Date of Diagnosis:<br>
+    <input type="text" name="DOD"><br><br>
+    Hospital of Treatment:<br>
+    <input type="text" name="HOT"><br><br>
+    Doctor:<br>
+    <input type="text" name="Doc"><br>
+    Doctor's Phone Number:<br>
+    <input type="text" name="DocPhone"><br>
+    Doctor's Email address:<br>
+    <input type="text" name="DocEmail"><br><br>
+    Prognosis:<br>
+    <input type="text" name="Prog"><br><br>
+    Your Story:<br>
+    <input type="text" name="Story"><br><br>
     Create a username:<br>
     <input type="text" name="username"><br><br>
     Create a password:<br>
@@ -22,6 +41,6 @@
     <input type="submit" value="Submit"><br><br>
   </form>
 
-  <p1><center>Already have a patient profile? <a href = login.html> Log in here</a>.</center></p1>
+  <p1><center>Don't have a Patient profile? <a href = sign_up> Sign up here </a>.</center></p1>
 </body>
 </html>

@@ -1,6 +1,7 @@
 // loading necessary modules
 var express = require('express');
 var httpModule = require('http');
+var bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 
 // create an express app
@@ -32,15 +33,23 @@ app.get('/sign_up', (req, res) => {
   res.sendFile(__dirname + '/sign_up.html');
 });
 
+app.get('/patientlist', function(req, res){
+    var patients = 15;
+    res.render('patientlist.ejs', {list: patients});
+  });
+
+  app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/sign_up.html');
+  });
 
 //This section was what Pauca had after class on Wednesday.
-app.post('/people', (req, res) => {
-  console.log('here is the request');
-  var collection = myDB.collection('volunteers');
-
-  collection.save(req.body, (err, result) =>{
-    if(err)
-      return console.log(err);
+app.post('/signup', (req, res) => {
+  console.log('got Post /signup request');
+  console.log(req.body);
+  myDB.collection('patients').save(req.body, (err, result) => {
+    if (err)
+    return console.log(err);
+    console.log('saved to database');
     res.redirect('/');
   });
 });
@@ -53,7 +62,7 @@ var port = process.env.PORT || 3000;
 
 //Below is stuff that Pauca showed us on Wednesday after class.
 var myDB;
-MongoClient.connect('mongodb://ResGroup:patientsock@ds113670.mlab.com:13670/resilience-dbase',
+MongoClient.connect('mongodb://ResGroup:patientsock@ds113630.mlab.com:13630/resiliencedb',
 (err, database) => {
   if(err)
     return console.log(err);
