@@ -45,7 +45,7 @@ app.get('/patientlist', function(req, res){
     res.sendFile(__dirname + '/sign_up.html');
   });
 
-//This section was what Pauca had after class on Wednesday.
+//Respond to POST request for target '/signup'
 app.post('/signup', (req, res) => {
   console.log('got Post /signup request');
   console.log(req.body);
@@ -55,7 +55,6 @@ app.post('/signup', (req, res) => {
     console.log('saved to database');
     res.redirect('/');
   });
-
 });
 
 function portListener() {
