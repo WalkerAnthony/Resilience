@@ -34,6 +34,10 @@ app.get('/sign_up', (req, res) => {
   res.sendFile(__dirname + '/sign_up.html');
 });
 
+app.get('/P_Review', (req, res) => {
+  res.sendFile(__dirname + '/P_Review.html');
+});
+
 
 // This will pull from the db and list the patient's
 app.get('/patientlist', function(req, res){
