@@ -15,15 +15,15 @@ app.use(express.static('assets'));
 app.use(bodyParser.urlencoded({extended: true}));
 function responder(req, res) {
   // Sending a file to the user's browser
-  res.sendFile(__dirname + '/resilienceaMain.html');
+  res.sendFile(__dirname + '/resilienceMain.html');
   console.log('got a request');
 };
 
 // Get request to / is given to funtion 'responder'
 app.get('/', responder);
 
-app.get('/resilienceaMain', (req, res) => {
-  res.sendfile(__dirname + '/resilienceaMain.html');
+app.get('/resilienceMain', (req, res) => {
+  res.sendFile(__dirname + '/resilienceMain.html');
 });
 
 app.get('/login', (req, res) => {
@@ -38,7 +38,7 @@ app.get('/P_Review', (req, res) => {
   res.sendFile(__dirname + '/P_Review.html');
 });
 
-// This will pull from the db and list the patients
+// This will pull from the DB and list the patients
 app.get('/patientlist', function(req, res){
     var patients = 15;
     res.render('patientlist.ejs', {list: patients});
@@ -57,6 +57,20 @@ app.post('/signup', (req, res) => {
     return console.log(err);
     console.log('saved to database');
     res.redirect('/');
+  });
+});
+
+//Respond to GET request for target '/login'
+app.get('/login', (req, res) => {
+  //Obtain data from patient list into cursor object
+  var cursor = myDB.collection(patientTable).find();
+  //Convert to an array to extract the patient data.
+  cursor.toArray(function (err, results) {
+    if (err)
+    return console.log(err);
+
+    //Render login.ejs
+    res.render('login.ejs', {patientTable: results});
   });
 });
 
