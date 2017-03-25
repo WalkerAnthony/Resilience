@@ -70,7 +70,7 @@ app.get('/login', (req, res) => {
     return console.log(err);
 
     //Render login.ejs
-    res.render('login.ejs', {patientTable: results});
+    res.render('patientlist.ejs', {patientTable: results});
   });
 });
 
