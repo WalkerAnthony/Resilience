@@ -39,9 +39,22 @@ app.get('/P_Review', (req, res) => {
 });
 
 // This will pull from the DB and list the patients
-app.get('/patientlist', function(req, res){
-    var patients = 15;
-    res.render('patientlist.ejs', {list: patients});
+app.get('/patientlist', function(req, res) {
+    var patientsUnr = myDB.collection('patients').find({status: "unreviewed"});
+    var patientsAcc = myDB.collection('patients').find({status: "accepted"});
+    var patientsRej = myDB.collection('patients').find({status: "rejected"});
+  patientsUnr.toArray(function (err, patients1) {
+    if (err)
+    return console.log(err);
+
+    res.render('patientlist.ejs', {list: patients1});
+  });
+  patientsAcc.toArray(function (err, patients2) {
+    if (err)
+    return console.log(err);
+
+    res.render('patientlist.ejs', {list1: patients2});
+  });
 });
 
 app.get('/', (req, res) => {
@@ -63,7 +76,7 @@ app.post('/signup', (req, res) => {
 //Respond to GET request for target '/login'
 app.get('/login', (req, res) => {
   //Obtain data from patient list into cursor object
-  var cursor = myDB.collection(patientTable).find();
+  var cursor = myDB.collection(patients).find();
   //Convert to an array to extract the patient data.
   cursor.toArray(function (err, results) {
     if (err)

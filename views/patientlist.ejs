@@ -13,15 +13,30 @@
     <p><a href = "resilienceMain">Back to Resilience home</a>.</p>
   </div>
 
-  <h1> Patients </h1>
-  <ul>
-    <% for(i = 0; i < list; i++) { %>
-        <li>
-          <%=  i  %>
-        </li>
+  <h1> Patient List: </h1>
 
-    <% } %>
-  </ul>
+    <h3> Unreviewed: </h3>
+    <ul>
+      <% for(i = 0; i < list.length; i++) { %>
+          <li>
+            <input type="text" name="pun_name" id="<%= 'pun_name'+i %>"
+            readonly value="<%= list[i].FirstName %> <%= list[i].LastName %>">
+          </li>
+
+      <% } %>
+    </ul>
+
+    <h3> Accepted: </h3>
+    <ul>
+      <% for(i = 0; i < list1.length; i++) { %>
+          <li>
+            <input type="text" name="pacc_name" id="<%= 'pacc_name'+i %>"
+            readonly value="<%= list1[i].FirstName %> <%= list1[i].LastName %>">
+          </li>
+
+      <% } %>
+    </ul>
+
 
 </body>
 </html>
