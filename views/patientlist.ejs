@@ -37,6 +37,17 @@
       <% } %>
     </ul>
 
+    <h3> Rejected: </h3>
+    <ul>
+      <% for(i = 0; i < list2.length; i++) { %>
+          <li>
+            <input type="text" name="prej_name" id="<%= 'prej_name'+i %>"
+            readonly value="<%= list2[i].FirstName %> <%= list2[i].LastName %>">
+          </li>
+
+      <% } %>
+    </ul>
+
 
 </body>
 </html>

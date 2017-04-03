@@ -46,14 +46,15 @@ app.get('/patientlist', function(req, res) {
   patientsUnr.toArray(function (err, patients1) {
     if (err)
     return console.log(err);
-
-    res.render('patientlist.ejs', {list: patients1});
-  });
-  patientsAcc.toArray(function (err, patients2) {
-    if (err)
-    return console.log(err);
-
-    res.render('patientlist.ejs', {list1: patients2});
+    patientsAcc.toArray(function (err, patients2) {
+      if (err)
+        return console.log(err);
+        patientsRej.toArray(function (err, patients3) {
+          if (err)
+          return console.log(err);
+          res.render('patientlist.ejs', {list: patients1, list1: patients2, list2: patients3});
+        });
+    });
   });
 });
 
@@ -65,7 +66,7 @@ app.get('/', (req, res) => {
 app.post('/signup', (req, res) => {
   console.log('got Post /signup request');
   console.log(req.body);
-  myDB.collection(patientTable).save(req.body, (err, result) => {
+  myDB.collection(patients).save(req.body, (err, result) => {
     if (err)
     return console.log(err);
     console.log('saved to database');
