@@ -19,6 +19,16 @@ function responder(req, res) {
   console.log('got a request');
 };
 
+//This is a function to update the status of the Profile Review
+var status;
+function review(choice){
+  status = choice;
+};
+
+function status(click){
+  console.log("Status is: " + status);
+};
+
 // Get request to / is given to funtion 'responder'
 app.get('/', responder);
 
