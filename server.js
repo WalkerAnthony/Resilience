@@ -23,11 +23,11 @@ function responder(req, res) {
 var status;
 function review(choice){
   status = choice;
-}
+};
 
 function status(click){
   console.log("Status is: " + status);
-}
+};
 
 // Get request to / is given to funtion 'responder'
 app.get('/', responder);
