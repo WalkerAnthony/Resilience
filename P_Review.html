@@ -25,8 +25,9 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li class="active"><a href="resilienceMain">Home</a></li>
-          <li><a href="#about">About</a></li>
+          <li><a href="about">About</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href = "patient_page_post-login">Patient Profile</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -67,67 +68,36 @@
   <!-- Not sure how to go about really displaying this info
        Could also be seperate boxes for each piece of info but we can decide -->
 
-<<<<<<< HEAD
-        <div class="page-header">
-          <h2>Doctor Info</h2>
-        </div>
-        <div class="well">
-          <p> Name: Mr. Dr. Patrick
-              Contact: 1-800-CODING-BLOWS
-              Hospital: Weenie Hut General
-              </p>
-
-        </div>
-        <div class="page-header">
-          <h2>Bio</h2>
-        </div>
-        <div class="well">
-          <p> Poor Jimmy is a shit coder and is in need of some nice socks. This is an example of where the bio info would go!
-              </p>
-        </div>
-
-
-
-        <div class="page-header">
-          <h1>Would you like to accept or reject</h1>
-        </div>
-        <p>
-          <button type="button" class="btn btn-lg btn-accept" onclick="review('accept')">Accept</button>
-          <button type="button" class="btn btn-lg btn-reject" onclick="review('reject')">Reject</button>
-          <br>
-          <button type="button" onclick="status()">Status</button>
-        </p>
-
-      </div> <!-- /container -->
-=======
     <div class="page-header">
-      <br>
-      <h2>Doctor Info:</h2>
+      <h2>Doctor Info</h2>
     </div>
     <div class="well">
-      <p> Name: Mr. Dr. Patrick <br>
-          Contact: 1-800-GITGUD-SCRUB <br>
-          Hospital: Weenie Hut General <br>
+      <p> Name: Mr. Dr. Patrick<br>
+          Contact: 1-800-GIT-GUDD<br>
+          Hospital: Weenie Hut General<br>
       </p>
+
     </div>
 
     <div class="page-header">
-      <h2>Bio:</h2>
+      <h2>Bio</h2>
     </div>
+
     <div class="well">
-      <p> Poor Jimmy is a bad coder and is in need of some nice socks. This is an example of where the bio info would go! </p>
+      <p> Poor Jimmy is a bad coder and is in need of some nice socks. This is an example of where the bio info would go!</p>
     </div>
 
 
     <div class="page-header">
-      <h1>Would you like to accept or reject this patient?</h1>
+      <h1>Would you like to accept or reject</h1>
     </div>
     <p>
-      <button type="button" class="btn btn-lg btn-accept">Accept</button>
-      <button type="button" class="btn btn-lg btn-reject">Reject</button>
+      <button type="button" class="btn btn-lg btn-accept" onclick="review('accept')">Accept</button>
+      <button type="button" class="btn btn-lg btn-reject" onclick="review('reject')">Reject</button>
+      <br><br>
+      <button type="button" onclick="status()">Status</button>
     </p>
     </div> <!-- /container -->
->>>>>>> afe3faf397d3fbbbbb458f4a9b1e77c1bfff360a
 
   <script>
     // Connect to MongoDB

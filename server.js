@@ -48,6 +48,14 @@ app.get('/P_Review', (req, res) => {
   res.sendFile(__dirname + '/P_Review.html');
 });
 
+app.get('/patient_page_post-login', (req, res) => {
+  res.sendFile(__dirname + '/patient_page_post-login.html');
+})
+
+app.get('/about', (req, res) => {
+  res.sendFile(__dirname + '/about.html');
+})
+
 // This will pull from the DB and list the patients
 app.get('/patientlist', function(req, res) {
     var patientsUnr = myDB.collection('patients').find({status: "unreviewed"});

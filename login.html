@@ -9,32 +9,54 @@
 </head>
 
 <body>
-
-
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="resilienceMain">Resilience Project</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="resilienceMain">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href = "patient_page_post-login">Patient Profile</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Nav header</li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <br><br>
   <div class="login-page">
 
     <div class="form">
-      <h5><center>Log in to your Patient Profile:</center></h5>
+      <h1><center>Log in to your Patient Profile:</center></h1>
 
-      <form class="register-form">
-
-        <input type="text" placeholder="name"/>
-        <input type="password" placeholder="password"/>
-        <input type="text" placeholder="username"/>
-
-        <button>create</button>
-        <p class="message">Don't have a patient profile? <a href=sign_up>Sign up here</a></p>
+        <center><input type="text" placeholder="Name"/></center><br>
+        <center><input type="text" placeholder="Username"/></center><br>
+        <center><input type="password" placeholder="Password"/></center><br>
+        <center><button>login</button></center><br>
 
       </form>
-      <form class="login-form">
-
-        <input type="text" placeholder="username"/>
-        <input type="password" placeholder="password"/>
-        <button>login</button>
-        <p class="message">Don't have a patient profile? <a href=sign_up>Sign up here</a></p>
-
-      </form>
-
+      <center><p class="message">Don't have a patient profile? <a href=sign_up>Sign up here</a></p></center>
+      <center><a href = "resilienceMain">Back to Resilience home.</a></center>
+      <center><a href = "patient_page_post-login">After the patient succesfully logs in, they will be redirected to this page.</a></center>
     </div>
   </div>
 
