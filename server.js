@@ -40,6 +40,14 @@ app.get('/login', (req, res) => {
   res.sendFile(__dirname + '/login.html');
 });
 
+app.get('adminlogin', (req, res) => {
+  res.sendFile(__dirname + '/adminlogin.ejs')
+});
+
+app.get('patientlist', (req, res) => {
+  res.sendFile(__dirname + '/patientlist.ejs')
+});
+
 app.get('/sign_up', (req, res) => {
   res.sendFile(__dirname + '/sign_up.html');
 });
@@ -78,6 +86,16 @@ app.get('/patientlist', function(req, res) {
         });
     });
   });
+});
+
+// This will get a list usernames and passwords for the admin login
+app.get('/adminlogin', function(req, res) {
+    var adminLog = myDB.collection('admin').find();
+      adminLog.toArray(function (err, admin) {
+          if (err)
+          return console.log(err);
+          res.render('adminLogin.ejs', {list: admin});
+      });
 });
 
 app.get('/', (req, res) => {

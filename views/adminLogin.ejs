@@ -45,21 +45,40 @@
   <div class="login-page">
 
     <div class="form">
-      <a href = "login"> <button type = "button" id = "patientlog">Patient Login</button> </a>
+      <a href = "login"> <button type = "button" id = "patientlog">Patinet Login</button> </a>
       <a href = "adminlogin"> <button type = "button" id = "adminlog">Admin Login</button> </a>
 
-      <h1><center>Log in to your Patient Profile:</center></h1>
+      <h1><center>Log in to your Admin Profile:</center></h1>
 
-        <center><input type="text" placeholder="Username"/></center><br>
-        <center><input type="password" placeholder="Password"/></center><br>
-        <center><button>Login</button></center><br>
+        <center><input type="text" placeholder="Username" id= "user"/></center><br>
+        <center><input type="password" placeholder="Password" id= "pass"/></center><br>
+        <center><button onclick="loginFunc()">Login</button></center><br>
 
       </form>
-      <center><p class="message">Don't have a patient profile? <a href=sign_up>Sign up here</a>.</p></center>
       <center><a href = "resilienceMain">Back to Resilience home.</a></center>
-      <center><a href = "patient_page_post-login">After the patient succesfully logs in, they will be redirected to this page.</a></center>
     </div>
   </div>
 
 </body>
 </html>
+
+<script>
+  function loginFunc() {
+
+    var unsername = document.getElementByID("user");
+    var password = document.getElementByID("pass");
+
+    for(i=0; i<list.length; i++) {
+      if(list[i].Username == username) {
+        if(list[i].Password == password) {
+          // link to the patient list page here
+
+          location.href = "patientlist";
+        }
+      }
+    }
+    location.href = "resilienceMain";
+  }
+
+
+</script>
