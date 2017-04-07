@@ -56,6 +56,10 @@ app.get('/about', (req, res) => {
   res.sendFile(__dirname + '/about.html');
 })
 
+app.get('/Resilience.CreatePP', (req, res) => {
+  res.sendFile(__dirname + '/Resilience.CreatePP.html');
+})
+
 // This will pull from the DB and list the patients
 app.get('/patientlist', function(req, res) {
     var patientsUnr = myDB.collection('patients').find({status: "unreviewed"});
