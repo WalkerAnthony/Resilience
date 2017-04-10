@@ -22,11 +22,16 @@ function responder(req, res) {
 //This is a function to update the status of the Profile Review
 var status;
 function review(choice){
-  status = choice;
+  if(choice = 'accept'){
+    status = 'accepted';
+  }
+  if(choice = 'reject'){
+    status = 'rejected';
+  }
 };
 
 function status(click){
-  console.log("Status is: " + status);
+  alert("Status is: " + status);
 };
 
 // Get request to / is given to funtion 'responder'
@@ -70,6 +75,10 @@ app.get('/patientlist', function(req, res) {
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/sign_up.html');
 });
+
+app.post('/P_Review', (req, res) => {
+
+})
 
 //Respond to POST request for target '/signup'
 app.post('/signup', (req, res) => {
