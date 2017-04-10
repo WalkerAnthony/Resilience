@@ -44,9 +44,9 @@ app.get('adminlogin', (req, res) => {
   res.sendFile(__dirname + '/adminlogin.ejs')
 });
 
-app.get('patientlist', (req, res) => {
-  res.sendFile(__dirname + '/patientlist.ejs')
-});
+//app.get('patientlist', (req, res) => {
+//  res.sendFile(__dirname + '/patientlist.ejs')
+//});
 
 app.get('/sign_up', (req, res) => {
   res.sendFile(__dirname + '/sign_up.html');
@@ -67,7 +67,9 @@ app.get('/about', (req, res) => {
 app.get('/Resilience.CreatePP', (req, res) => {
   res.sendFile(__dirname + '/Resilience.CreatePP.html');
 })
-
+app.get('/patientLogin', (req, res) => {
+  res.sendFile(__dirname + '/patientLogin.ejs');
+})
 // This will pull from the DB and list the patients
 app.get('/patientlist', function(req, res) {
     var patientsUnr = myDB.collection('patients').find({status: "unreviewed"});
@@ -94,6 +96,7 @@ app.get('/adminlogin', function(req, res) {
       adminLog.toArray(function (err, admin) {
           if (err)
           return console.log(err);
+          console.log(admin)
           res.render('adminLogin.ejs', {list: admin});
       });
 });
@@ -106,7 +109,7 @@ app.get('/', (req, res) => {
 app.post('/signup', (req, res) => {
   console.log('got Post /signup request');
   console.log(req.body);
-  myDB.collection(patients).save(req.body, (err, result) => {
+  myDB.collection('patients').save(req.body, (err, result) => {
     if (err)
     return console.log(err);
     console.log('saved to database');
@@ -114,10 +117,25 @@ app.post('/signup', (req, res) => {
   });
 });
 
+//authenicates the admin user by getting the user name and password from the req
+//and checking the data with the database
+app.post('/authAdmin', (req, res) => {
+  console.log(req.body);
+
+  var adminLog = myDB.collection('admin').findOne(req.body, function(err, doc){
+    if(doc != null){
+      res.redirect('/patientlist');
+    }
+    else{
+      res.redirect('/adminlogin');
+    }
+  });
+});
+
 //Respond to GET request for target '/login'
 app.get('/login', (req, res) => {
   //Obtain data from patient list into cursor object
-  var cursor = myDB.collection(patients).find();
+  var cursor = myDB.collection('patients').find();
   //Convert to an array to extract the patient data.
   cursor.toArray(function (err, results) {
     if (err)
