@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Resilience Project - Login</title>
+  <title>Resilience Project - Welcome back!</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
   integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
   crossorigin="anonymous">
@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
@@ -23,12 +24,12 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li><a href="resilienceMain">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href = "patient_page_post-login">Patient Profile</a></li>
+          <li><a href="about">About</a></li>
+          <li class="active"><a href = "patient_page_post-login">Patient Profile</a></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown<span class="caret"></span></a>
+            <a href = "#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
+              <li><a href="resilienceMain">Action</a></li>
               <li><a href="#">Another action</a></li>
               <li><a href="#">Something else here</a></li>
               <li role="separator" class="divider"></li>
@@ -42,23 +43,12 @@
     </div>
   </nav>
   <br><br>
-  <div class="login-page">
 
-    <div class="form">
-      <a href = "login"> <button type = "button" id = "patientlog">Patient Login</button> </a>
-      <a href = "adminlogin"> <button type = "button" id = "adminlog">Admin Login</button> </a>
+  <div>
+    <center><h1>Welcome back, Patient X!</h1>
+    <p>Click <a href = "Resilience.CreatePP">here</a> to create a patient profile if you have not already done so.</p>
+    </center>
 
-      <h1><center>Log in to your Patient Profile:</center></h1>
-
-        <center><input type="text" placeholder="Username"/></center><br>
-        <center><input type="password" placeholder="Password"/></center><br>
-        <center><button>Login</button></center><br>
-
-      </form>
-      <center><p class="message">Don't have a patient profile? <a href=sign_up>Sign up here</a>.</p></center>
-      <center><a href = "resilienceMain">Back to Resilience home.</a></center>
-      <center><a href = "patient_page_post-login">After the patient succesfully logs in, they will be redirected to this page.</a></center>
-    </div>
   </div>
 
 </body>
