@@ -9,8 +9,7 @@
 
 <body>
 
-  <!-- Fixed navbar -->
-  <!-- Kept this just incase we could use it later to help edit his interface-->
+  <!-- navbar -->
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
@@ -24,7 +23,7 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="resilienceMain">Home</a></li>
+          <li><a href="resilienceMain">Home</a></li>
           <li><a href="about">About</a></li>
           <li><a href = "patient_page_post-login">Patient Profile</a></li>
           <li class="dropdown">
@@ -43,6 +42,7 @@
       </div><!--/.nav-collapse -->
     </div>
   </nav>
+  <br><br>
 
   <div class="container theme-showcase" role="main">
 
@@ -63,6 +63,8 @@
           Prognosis: Bad web developer <br>
           Treatment Length: Not long enough</p>
     </div>
+
+    <br>
 
   <!-- Not sure how to go about really displaying this info
        Could also be seperate boxes for each piece of info but we can decide -->
@@ -88,7 +90,7 @@
 
 
     <div class="page-header">
-      <h1>Would you like to accept or reject</h1>
+      <h1>Would you like to accept or reject this patient?</h1>
     </div>
     <p>
       <button type="button" class="btn btn-lg btn-accept" onclick="review('accept')">Accept</button>
