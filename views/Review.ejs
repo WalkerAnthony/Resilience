@@ -59,16 +59,16 @@
 <!-- this is where the undefined is happening
     because there needs to be a defined way of
     accessing the info seperately in order to display it-->
-<!--  <% for(i = 0; i < list.length; i++) { %> -->
+<!--  for(i = 0; i < list.length; i++) { -->
     <div class="jumbotron">
       <h1>
-        <%= list[i].FirstName + " " + list[i].LastName %>
+        <%= patient.FirstName + " " + patient.LastName %>
       </h1>
       <p> Age: 45 <br>
           Prognosis: Bad web developer <br>
           Treatment Length: Not long enough</p>
     </div>
-<!--  <% } %> --> 
+<!--  } -->
   <!-- Could also be seperate boxes for each piece of info but we can decide -->
 
     <div class="page-header">
