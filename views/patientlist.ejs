@@ -22,8 +22,7 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li><a href="resilienceMain">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="about">About</a></li>
           <li><a href = "patient_page_post-login">Patient Profile</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -49,10 +48,14 @@
     <ul>
       <% for(i = 0; i < list.length; i++) { %>
           <li>
-            <input type="text" name="pun_name" id="<%= 'pun_name'+i %>"
-            readonly value="<%= list[i].FirstName %> <%= list[i].LastName %>">
-          </li>
-
+              <form id="<%= 'form'+i %>" action="/Review" method="post">
+                 <input type="text" name="pun_name" id="<%= 'pun_name'+i %>"
+                 readonly value="<%= list[i].FirstName %> <%= list[i].LastName %>">
+                 <input type="hidden" name="status" value="unreviewed">
+                 <input type="hidden" name="num" value="<%= i %>">
+                 <button type="button" id= <%= 'view' + i %> onclick="viewPatient(this)">View</button>
+               </form>
+            </li>
       <% } %>
     </ul>
 
@@ -82,5 +85,14 @@
       <p><a href = "resilienceMain">Back to Resilience home</a>.</p>
     </div>
 
+    <script type="text/javascript">
+      function viewPatient(button) {
+        var num = button.id.match(/\d+/)[0];
+        console.log(num);
+        var form = document.getElementById('form'+num);
+        form.submit();
+        console.log('submitted form');
+      }
+    </script>
 </body>
 </html>

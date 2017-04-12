@@ -4,6 +4,7 @@ var httpModule    = require('http');
 var bodyParser    = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 
+
 var patientTable = "patients";
 // create an express app
 var app = express();
@@ -56,9 +57,31 @@ app.get('adminlogin', (req, res) => {
 app.get('/sign_up', (req, res) => {
   res.sendFile(__dirname + '/sign_up.html');
 });
+// Global variables
+var unrPat;
+var accPat;
+var rejPat;
+var Pat;
 
-app.get('/P_Review', (req, res) => {
-  res.sendFile(__dirname + '/P_Review.html');
+app.post('/Review', (req, res) => {
+  Pat = (req.body);
+  var PatNum = Pat.num;
+  if (Pat.status == 'unreviewed') {
+      var patUnr = myDB.collection('patients').find({__id: Pat.__id});
+      console.log(patUnr);
+  }
+  else {
+    console.log("this executed instead");
+    //this can be built once we get unreviewed working
+
+    // other cases
+  }
+
+
+  console.log("selected patient")
+  console.log(Pat);
+  res.render('Review.ejs', {patient: Pat});
+
 });
 
 app.get('/patient_page_post-login', (req, res) => {
@@ -75,39 +98,50 @@ app.get('/Resilience.CreatePP', (req, res) => {
 app.get('/patientLogin', (req, res) => {
   res.sendFile(__dirname + '/patientLogin.ejs');
 })
+
+
 // This will pull from the DB and list the patients
 app.get('/patientlist', function(req, res) {
-    var patientsUnr = myDB.collection('patients').find({status: "unreviewed"});
-    var patientsAcc = myDB.collection('patients').find({status: "accepted"});
-    var patientsRej = myDB.collection('patients').find({status: "rejected"});
+  var patientsUnr = myDB.collection('patients').find({status: "unreviewed"});
+  var patientsAcc = myDB.collection('patients').find({status: "accepted"});
+  var patientsRej = myDB.collection('patients').find({status: "rejected"});
   patientsUnr.toArray(function (err, patients1) {
     if (err)
-    return console.log(err);
+      return console.log(err);
+
+    // save unreviewed patient list
+    unrPat = patients1;
+
     patientsAcc.toArray(function (err, patients2) {
       if (err)
         return console.log(err);
-        patientsRej.toArray(function (err, patients3) {
-          if (err)
+
+      acceptedPatients = patients2;
+
+      patientsRej.toArray(function (err, patients3) {
+        if (err)
           return console.log(err);
-          res.render('patientlist.ejs', {list: patients1, list1: patients2, list2: patients3});
-        });
+
+        rejectedPatients = patients3;
+        res.render('patientlist.ejs', {list: patients1, list1: patients2, list2: patients3});
+      });
     });
   });
 });
 
 // This will get a list usernames and passwords for the admin login
 app.get('/adminlogin', function(req, res) {
-    var adminLog = myDB.collection('admin').find();
-      adminLog.toArray(function (err, admin) {
-          if (err)
-          return console.log(err);
-          console.log(admin)
-          res.render('adminLogin.ejs', {list: admin});
-      });
+  var adminLog = myDB.collection('admin').find();
+  adminLog.toArray(function (err, admin) {
+    if (err)
+    return console.log(err);
+    console.log(admin)
+    res.render('adminLogin.ejs', {list: admin});
+  });
 });
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/sign_up.html');
+  res.sendFile(__dirname + '/sign_up.html');
 });
 
 app.post('/P_Review', (req, res) => {
@@ -166,7 +200,7 @@ var myDB;
 MongoClient.connect('mongodb://ResGroup:patientsock@ds113630.mlab.com:13630/resiliencedb',
 (err, database) => {
   if(err)
-    return console.log(err);
+  return console.log(err);
   myDB = database;
   http.listen(port, portListener);
 });
