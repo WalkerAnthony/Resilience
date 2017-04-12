@@ -1,0 +1,73 @@
+npm install // incase you fuck up and delete everything
+
+// atom to open up server file
+// opens atom
+**in atom**
+
+//Loading a packages
+
+var express = require('express');
+
+var httpModule = require('http')
+
+//create an express app
+var app = express();
+
+var http = httpModule.Server(app);
+
+//Anything you need for the website from this finction call
+//assets
+app.use(express.static('assets')); 
+
+function responder(req, res) {
+
+//sending file to user browser
+res.sendFile(__dirname + '/index.html')
+console.log('got a request');
+};
+
+
+
+//Get request to / is given to responder function
+app.get('/', responder);
+
+
+var port = process.env.PORT || 3000;
+
+function portListener() {
+console.log('Listening on localhost' + port);
+};
+
+http.listen(port, portListener);
+
+
+** on a new html file **
+
+<html>
+<head>
+<title> Campus X </title>
+
+<head>
+
+<body>
+
+<h1> suck my ass </h1>
+
+<body>
+<head>
+
+// uploading to git hub
+
+git init
+git add index.html package.json server.js
+ls
+git status
+git commit -a -m "my first ass"
+
+**back to atom**
+//.gitignore
+
+
+node_modules
+
+git add .gitignore
