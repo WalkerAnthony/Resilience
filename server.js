@@ -40,8 +40,8 @@ function responder(req, res) {
 //         }
 //     }
 // };
+// =======
 
-=======
 function review(choice){
   if(choice = 'accept'){
     db.collection.update(
@@ -62,7 +62,7 @@ function review(choice){
     )
   }
 };
->>>>>>> Stashed changes
+// >>>>>>> Stashed changes
 
 // Get request to / is given to funtion 'responder'
 app.get('/', responder);
