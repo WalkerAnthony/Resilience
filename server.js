@@ -24,7 +24,7 @@ function responder(req, res) {
 function review(choice){
   if(choice = 'accept'){
     db.collection.update(
-      { _id: },
+      { _id: patient._id},
       {
         $rename:
           { 'status': 'accepted' }
@@ -33,7 +33,7 @@ function review(choice){
   }
   if(choice = 'reject'){
     db.collection.update(
-      { _id: }
+      { _id: patient._id}
       {
         $rename:
           { 'status': 'rejected'}
