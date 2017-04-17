@@ -3,7 +3,7 @@ var express       = require('express');
 var httpModule    = require('http');
 var bodyParser    = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
-
+var ObjectId = require('mongodb').ObjectId;
 
 var patientTable = "patients";
 // create an express app
@@ -21,26 +21,25 @@ function responder(req, res) {
 };
 
 //This is a function to update the status of the Patient Profile
-function review(choice){
-  if(choice = 'accept'){
-    db.collection.update(
-      { _id: patient._id},
-      {
-        $rename:
-          { 'status': 'accepted' }
-      }
-    )
-  }
-  if(choice = 'reject'){
-    db.collection.update(
-      { _id: patient._id}
-      {
-        $rename:
-          { 'status': 'rejected'}
-      }
-    )
-  }
-};
+// //function review(choice){
+//   if(choice = 'accept'){
+//     db.collection.update(
+//       {_id: patient._id});
+//       {
+//         $rename:
+//           { 'status' : 'accepted' }
+//       }
+//     }
+//   if(choice = 'reject'){
+//     db.collection.update(
+//       {_id: patient._id})
+//       {
+//         $rename:
+//           { 'status' : 'rejected'}
+//         }
+//     }
+// };
+
 
 // Get request to / is given to funtion 'responder'
 app.get('/', responder);
@@ -81,22 +80,20 @@ var Pat;
 
 app.post('/Review', (req, res) => {
   Pat = (req.body);
-  var PatNum = Pat.num;
-  if (Pat.status == 'unreviewed') {
-      var patUnr = myDB.collection('patients').find({__id: Pat.__id});
-      console.log(patUnr);
-  }
-  else {
-    console.log("this executed instead");
-    //this can be built once we get unreviewed working
+  var PatId = Pat.id;
 
-    // other cases
-  }
+  console.log("patient id is " + PatId);
 
+ var record = myDB.collection('patients').find(ObjectId(PatId));
+ record.toArray(function (err, patientRec) {
+   if (err)
+     return console.log(err);
 
   console.log("selected patient")
-  console.log(Pat);
-  res.render('Review.ejs', {patient: Pat});
+  console.log(patientRec);
+
+  res.render('Review.ejs', {patient: patientRec[0]});
+});
 
 });
 
@@ -139,7 +136,7 @@ app.get('/patientlist', function(req, res) {
           return console.log(err);
 
         rejectedPatients = patients3;
-        res.render('patientlist.ejs', {list: patients1, list1: patients2, list2: patients3});
+        res.render('patientlist.ejs', {list: unrPat, list1: patients2, list2: patients3});
       });
     });
   });

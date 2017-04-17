@@ -49,6 +49,7 @@
       <% for(i = 0; i < list.length; i++) { %>
           <li>
               <form id="<%= 'form'+i %>" action="/Review" method="post">
+                <input type="hidden" name="id" id="<%= 'id_id'+i %>" value="<%=list[i]._id%>">
                  <input type="text" name="pun_name" id="<%= 'pun_name'+i %>"
                  readonly value="<%= list[i].FirstName %> <%= list[i].LastName %>">
                  <input type="hidden" name="status" value="unreviewed">
@@ -63,6 +64,7 @@
     <ul>
       <% for(i = 0; i < list1.length; i++) { %>
           <li>
+            <input type="hidden" id="<%= 'id_id'+i %>" value="<%=list1[i]._id%>">
             <input type="text" name="pacc_name" id="<%= 'pacc_name'+i %>"
             readonly value="<%= list1[i].FirstName %> <%= list1[i].LastName %>">
           </li>
