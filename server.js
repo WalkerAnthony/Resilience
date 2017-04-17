@@ -21,7 +21,7 @@ function responder(req, res) {
 };
 
 //This is a function to update the status of the Patient Profile
-<<<<<<< Updated upstream
+// <<<<<<< Updated upstream
 // //function review(choice){
 //   if(choice = 'accept'){
 //     db.collection.update(
