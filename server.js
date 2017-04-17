@@ -20,19 +20,26 @@ function responder(req, res) {
   console.log('got a request');
 };
 
-//This is a function to update the status of the Profile Review
-var status;
+//This is a function to update the status of the Patient Profile
 function review(choice){
   if(choice = 'accept'){
-    status = 'accepted';
+    db.collection.update(
+      { _id: },
+      {
+        $rename:
+          { 'status': 'accepted' }
+      }
+    )
   }
   if(choice = 'reject'){
-    status = 'rejected';
+    db.collection.update(
+      { _id: }
+      {
+        $rename:
+          { 'status': 'rejected'}
+      }
+    )
   }
-};
-
-function status(click){
-  alert("Status is: " + status);
 };
 
 // Get request to / is given to funtion 'responder'

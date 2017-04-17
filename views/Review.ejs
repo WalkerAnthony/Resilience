@@ -65,8 +65,8 @@
         <%= patient.FirstName + " " + patient.LastName %>
       </h1>
       <p> Age: 45 <br>
-          Prognosis: Bad web developer <br>
-          Treatment Length: Not long enough</p>
+          Prognosis: <%= patient.Diagnosis %> <br>
+          Day of Diagnosis: <%= patient.DOD %> </p>
     </div>
 <!--  } -->
   <!-- Could also be seperate boxes for each piece of info but we can decide -->
@@ -75,9 +75,9 @@
       <h2>Doctor Info</h2>
     </div>
     <div class="well">
-      <p> Name: Mr. Dr. Patrick<br>
-          Contact: 1-800-GIT-GUDD<br>
-          Hospital: Weenie Hut General<br>
+      <p> Name: <%= patient.Doc %> <br>
+          Contact: <%= patient.DocPhone %> <br>
+          Hospital: <%= patient.HOT %> <br>
       </p>
 
     </div>
@@ -97,8 +97,7 @@
     <p>
       <button type="button" class="btn btn-lg btn-accept" onclick="review('accept')">Accept</button>
       <button type="button" class="btn btn-lg btn-reject" onclick="review('reject')">Reject</button>
-      <br><br>
-      <button type="button" onclick="status()">Status</button>
+      <br>
     </p>
     </div> <!-- /container -->
 
