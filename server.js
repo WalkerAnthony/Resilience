@@ -108,9 +108,9 @@ var Pat;
 
 app.post('/Review', (req, res) => {
   Pat = (req.body);
-  <<<<<<< Updated upstream
+  //<<<<<<< Updated upstream
   var PatId = Pat.id;
-  =======
+  //=======
   var PatNum = Pat.num;
   if (Pat.status == 'unreviewed') {
     var patUnr = myDB.collection('patients').find({__id: Pat.__id});
@@ -119,7 +119,7 @@ app.post('/Review', (req, res) => {
   else {
     console.log("this executed instead");
     //this can be built once we get unreviewed working
-    >>>>>>> Stashed changes
+    //>>>>>>> Stashed changes
 
     console.log("patient id is " + PatId);
 
