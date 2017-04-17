@@ -53,7 +53,7 @@ app.get('/login', (req, res) => {
   res.sendFile(__dirname + '/login.html');
 });
 
-app.get('adminlogin', (req, res) => {
+app.get('/adminlogin', (req, res) => {
   res.sendFile(__dirname + '/adminlogin.ejs')
 });
 
@@ -64,6 +64,15 @@ app.get('adminlogin', (req, res) => {
 app.get('/sign_up', (req, res) => {
   res.sendFile(__dirname + '/sign_up.html');
 });
+
+app.get('/designer_sign_up', (req, res) => {
+  res.sendFile(__dirname + '/designer_sign_up.html');
+});
+
+app.get('/sign_up_splash', (req, res) => {
+  res.sendFile(__dirname + '/sign_up_splash.html');
+});
+
 // Global variables
 var unrPat;
 var accPat;
@@ -160,6 +169,17 @@ app.post('/signup', (req, res) => {
   console.log('got Post /signup request');
   console.log(req.body);
   myDB.collection('patients').save(req.body, (err, result) => {
+    if (err)
+    return console.log(err);
+    console.log('saved to database');
+    res.redirect('/');
+  });
+});
+
+app.post('/designersignup', (req, res) => {
+  console.log('got Post /designersignup request');
+  console.log(req.body);
+  myDB.collection('designers').save(req.body, (err, result) => {
     if (err)
     return console.log(err);
     console.log('saved to database');
