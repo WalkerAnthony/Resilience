@@ -76,12 +76,12 @@ app.get('/login', (req, res) => {
   res.sendFile(__dirname + '/login.html');
 });
 
-app.get('/adminlogin', (req, res) => {
-  res.sendFile(__dirname + '/adminlogin.ejs')
+app.get('/adminLogin', (req, res) => {
+  res.sendFile(__dirname + '/adminLogin.ejs')
 });
 
-app.get('designerlogin', (req, res) => {
-  res.sendFile(__dirname + '/designerlogin.ejs')
+app.get('designerLogin', (req, res) => {
+  res.sendFile(__dirname + '/designerLogin.ejs')
 })
 
 //app.get('patientlist', (req, res) => {
@@ -152,13 +152,13 @@ app.post('/Review', (req, res) => {
   })
 
   // This will get a list usernames and passwords for the designer login
-  app.get('/designerlogin', function(req, res) {
+  app.get('/designerLogin', function(req, res) {
     var designerLog = myDB.collection('designers').find();
     designerLog.toArray(function (err, designers) {
       if (err)
       return console.log(err);
       console.log(designers)
-      res.render('designerlogin.ejs', {list: designers});
+      res.render('designerLogin.ejs', {list: designers});
     });
   });
 
@@ -192,13 +192,13 @@ app.post('/Review', (req, res) => {
   });
 
   // This will get a list usernames and passwords for the admin login
-  app.get('/adminlogin', function(req, res) {
+  app.get('/adminLogin', function(req, res) {
     var adminLog = myDB.collection('admin').find();
     adminLog.toArray(function (err, admin) {
       if (err)
       return console.log(err);
       console.log(admin)
-      res.render('adminLogin.ejs', {list: admin});
+      res.render('/adminLogin.ejs', {list: admin});
     });
   });
 
@@ -243,7 +243,7 @@ app.post('/Review', (req, res) => {
         res.redirect('/patientlist');
       }
       else{
-        res.redirect('/adminlogin');
+        res.redirect('/adminLogin');
       }
     });
   });
@@ -258,7 +258,7 @@ app.post('/Review', (req, res) => {
         res.redirect('/patientlist');
       }
       else{
-        res.redirect('/designerlogin');
+        res.redirect('/designerLogin');
       }
     });
   });
