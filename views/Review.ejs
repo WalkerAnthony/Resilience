@@ -93,53 +93,34 @@
       <h1>Would you like to accept or reject</h1>
     </div>
     <p>
-      <button type="button" class="btn btn-lg btn-accept" onclick="review('accept')">Accept</button>
-      <button type="button" class="btn btn-lg btn-reject" onclick="review('reject')">Reject</button>
+      <form id="approve" class="" action="/approve" method="post">
+        <button type="button" class="btn btn-lg btn-accept" onclick="review('accept')">Accept</button>
+      </form>
+      <form id= "rejected" class="" action="/rejected" method="post">
+        <button type="button" class="btn btn-lg btn-reject" onclick="review('reject')">Reject</button>
+      </form>
       <br>
     </p>
     </div> <!-- /container -->
 
   <script>
-    // Connect to MongoDB
-    // Need the URL or whatever to connect to the database
-    var MongoClient = require('mongodb').MongoClient, format = require('util').format;
 
-    MongoClient.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
-      if(err) throw err;
+  function review(choice){
+    if(choice == 'accept'){
+      console.log('inside');
 
-      var collection = db.collection('test_insert');
-      collection.insert({a:2}, function(err, docs) {
+      var f = document.getElementById("approve");
+      f.submit();
+    }
+    if(choice == 'reject'){
+      console.log('inside');
 
-        collection.count(function(err, count) {
-          console.log(format("count = %s", count));
-        });
-
-        // Locate all the entries using find
-        collection.find().toArray(function(err, results) {
-          console.dir(results);
-          // Let's close the db
-          db.close();
-        });
-      });
-    });
-
-    var express       = require('express');
-    var httpModule    = require('http');
-    var bodyParser    = require('body-parser');
-    const MongoClient = require('mongodb').MongoClient;
-
-    var http = httpModule.Server(app);
-
-    app.get('/patientlist', function(req, res) {
-    var patientsUnr = myDB.collection('patients').find({status: "unreviewed"});
-  patientsUnr.toArray(function (err, patients1) {
-    if (err)
-    return console.log(err);
-
-    res.render('patientlist.ejs', {list: patients1});
-    });
-  });
+      var f = document.getElementById("rejected");
+      f.submit();
+  }
+};
 </script>
+
   <!-- Bootstrap core JavaScript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->

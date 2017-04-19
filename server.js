@@ -42,28 +42,6 @@ function responder(req, res) {
 // };
 // =======
 
-/*
-function review(choice){
-  if(choice = 'accept'){
-    db.collection.update(
-      { _id: patient._id},
-      {
-        $rename:
-        { 'status': 'accepted' }
-      }
-    )
-  }
-  if(choice = 'reject'){
-    db.collection.update(
-      { _id: patient._id}
-      {
-        $rename:
-        { 'status': 'rejected'}
-      }
-    )
-  }
-};*/
-// >>>>>>> Stashed changes
 
 // Get request to / is given to funtion 'responder'
 app.get('/', responder);
@@ -84,9 +62,9 @@ app.get('designerLogin', (req, res) => {
   res.sendFile(__dirname + '/designerLogin.ejs')
 })
 
-//app.get('patientlist', (req, res) => {
-//  res.sendFile(__dirname + '/patientlist.ejs')
-//});
+app.get('Review', (req, res) => {
+    res.sendFile(__dirname + '/Review.ejs')
+});
 
 app.get('/sign_up', (req, res) => {
   res.sendFile(__dirname + '/sign_up.html');
@@ -105,35 +83,26 @@ var unrPat;
 var accPat;
 var rejPat;
 var Pat;
+var PatId;
 
 app.post('/Review', (req, res) => {
   Pat = (req.body);
   //<<<<<<< Updated upstream
-  var PatId = Pat.id;
-  /*=======
-  var PatNum = Pat.num;
-  if (Pat.status == 'unreviewed') {
-    var patUnr = myDB.collection('patients').find({__id: Pat.__id});
-    console.log(patUnr);
-  }
-  else {
-    console.log("this executed instead");
-    //this can be built once we get unreviewed working
-    //>>>>>>> Stashed changes
-    */
-    console.log("patient id is " + PatId);
+  PatId = Pat.id;
 
     var record = myDB.collection('patients').find(ObjectId(PatId));
     record.toArray(function (err, patientRec) {
       if (err)
       return console.log(err);
 
-      console.log("selected patient")
-      console.log(patientRec);
-
       res.render('Review.ejs', {patient: patientRec[0]});
     });
   });
+
+ app.post('/approve', (req, res) => {
+   myDB.collection('patients').update({_id:ObjectId(PatId)},{$set:{'status':'accepted'}});
+   console.log("worked");
+ });
 
   app.get('/patient_page_post-login', (req, res) => {
     res.sendFile(__dirname + '/patient_page_post-login.html');
@@ -205,10 +174,6 @@ app.post('/Review', (req, res) => {
   app.get('/', (req, res) => {
     res.sendFile(__dirname + '/sign_up.html');
   });
-
-  app.post('/P_Review', (req, res) => {
-
-  })
 
   //Respond to POST request for target '/signup'
   app.post('/signup', (req, res) => {

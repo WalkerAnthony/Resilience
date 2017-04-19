@@ -63,12 +63,16 @@
     <h3> Accepted: </h3>
     <ul>
       <% for(i = 0; i < list1.length; i++) { %>
-          <li>
-            <input type="hidden" id="<%= 'id_id'+i %>" value="<%=list1[i]._id%>">
-            <input type="text" name="pacc_name" id="<%= 'pacc_name'+i %>"
-            readonly value="<%= list1[i].FirstName %> <%= list1[i].LastName %>">
-          </li>
-
+            <li>
+                <form id="<%= 'form'+i %>" action="/Review" method="post">
+                  <input type="hidden" id="<%= 'id_id'+i %>" value="<%=list1[i]._id%>">
+                  <input type="text" name="pacc_name" id="<%= 'pacc_name'+i %>"
+                  readonly value="<%= list1[i].FirstName %> <%= list1[i].LastName %>">
+                  <input type="hidden" name="status" value="approve">
+                  <input type="hidden" name="num" value="<%= i %>">
+                  <button type="button" id= <%= 'view' + i %> onclick="viewPatient(this)">View</button>
+               </form>
+            </li>
       <% } %>
     </ul>
 
@@ -76,8 +80,13 @@
     <ul>
       <% for(i = 0; i < list2.length; i++) { %>
           <li>
+            <form id="<%= 'form'+i %>" action="/Review" method="post">
+            <input type="hidden" id="<%= 'id_id'+i %>" value="<%=list1[i]._id%>">
             <input type="text" name="prej_name" id="<%= 'prej_name'+i %>"
             readonly value="<%= list2[i].FirstName %> <%= list2[i].LastName %>">
+            <input type="hidden" name="status" value="rejected">
+            <input type="hidden" name="num" value="<%= i %>">
+            <button type="button" id= <%= 'view' + i %> onclick="viewPatient(this)">View</button>
           </li>
 
       <% } %>
