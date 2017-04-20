@@ -1,5 +1,6 @@
 
 
+
 .login-page {
   width: 400px;
   padding: 8% 0 0;
@@ -19,6 +20,7 @@
   font-family: sans-serif;
   outline: 0;
   background: #f2f2f2;
+  color:#00A69C;
   width: 100%;
   border: 0;
   margin: 0 0 15px;
@@ -30,7 +32,7 @@
   font-family: sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #4CAF50;
+  background: #00A69C;
   width: 100%;
   border: 0;
   padding: 15px;
@@ -45,7 +47,7 @@
 }
 .form .message {
   margin: 15px 0 0;
-  color: #b3b3b3;
+  color: #00A69C;
   font-size: 12px;
 }
 .form .message a {
@@ -90,10 +92,10 @@
 }
 body {
   background: #76b852; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-  background: -moz-linear-gradient(right, #76b852, #8DC26F);
-  background: -o-linear-gradient(right, #76b852, #8DC26F);
-  background: linear-gradient(to left, #76b852, #8DC26F);
+  background: -webkit-linear-gradient(right, #00A69C, #8DC26F);
+  background: -moz-linear-gradient(right, #00A69C, #8DC26F);
+  background: -o-linear-gradient(right, #00A69C, #8DC26F);
+  background: linear-gradient(to left, #00A69C, #8DC26F);
   font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
