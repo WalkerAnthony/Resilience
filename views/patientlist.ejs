@@ -91,6 +91,57 @@
       <% } %>
     </ul>
 
+  <br><br><br>
+
+  <h1> Designer List: </h1>
+
+    <h3> Unreviewed: </h3>
+    <ul>
+      <% for(i = 0; i < list3.length; i++) { %>
+          <li>
+              <form id="<%= 'form'+i %>" action="/Review" method="post">
+                <input type="hidden" name="id" id="<%= 'id_id'+i %>" value="<%=list3[i]._id%>">
+                 <input type="text" name="dun_name" id="<%= 'dun_name'+i %>"
+                 readonly value="<%= list3[i].FirstName %> <%= list3[i].LastName %>">
+                 <input type="hidden" name="status" value="unreviewed">
+                 <input type="hidden" name="num" value="<%= i %>">
+                 <button type="button" id= <%= 'view' + i %> onclick="viewDesigners(this)">View</button>
+               </form>
+            </li>
+      <% } %>
+    </ul>
+
+    <h3> Accepted: </h3>
+    <ul>
+      <% for(i = 0; i < list4.length; i++) { %>
+            <li>
+                <form id="<%= 'form'+i %>" action="/Review" method="post">
+                  <input type="hidden" id="<%= 'id_id'+i %>" value="<%=list4[i]._id%>">
+                  <input type="text" name="dacc_name" id="<%= 'dacc_name'+i %>"
+                  readonly value="<%= list4[i].FirstName %> <%= list4[i].LastName %>">
+                  <input type="hidden" name="status" value="approve">
+                  <input type="hidden" name="num" value="<%= i %>">
+                  <button type="button" id= <%= 'view' + i %> onclick="viewDesigner(this)">View</button>
+               </form>
+            </li>
+      <% } %>
+    </ul>
+
+    <h3> Rejected: </h3>
+    <ul>
+      <% for(i = 0; i < list5.length; i++) { %>
+          <li>
+            <form id="<%= 'form'+i %>" action="/Review" method="post">
+            <input type="hidden" id="<%= 'id_id'+i %>" value="<%=list5[i]._id%>">
+            <input type="text" name="drej_name" id="<%= 'drej_name'+i %>"
+            readonly value="<%= list5[i].FirstName %> <%= list5[i].LastName %>">
+            <input type="hidden" name="status" value="rejected">
+            <input type="hidden" name="num" value="<%= i %>">
+            <button type="button" id= <%= 'view' + i %> onclick="viewDesigner(this)">View</button>
+          </li>
+      <% } %>
+    </ul>
+
     <div>
       <p><a href = "resilienceMain">Back to Resilience home</a>.</p>
     </div>
