@@ -51,8 +51,8 @@ app.get('/login', (req, res) => {
   res.sendFile(__dirname + '/login.html');
 });
 
-app.get('/adminlogin', (req, res) => {
-  res.sendFile(__dirname + '/adminlogin.ejs');
+app.get('adminLogin', (req, res) => {
+  res.sendFile(__dirname + '/adminLogin.ejs');
 });
 
 app.get('designerLogin', (req, res) => {
@@ -63,7 +63,7 @@ app.get('Review', (req, res) => {
   res.sendFile(__dirname + '/Review.ejs')
 });
 
-app.get('sign_up_designer', (req, res) => {
+app.get('/sign_up_designer', (req, res) => {
   res.sendFile(__dirname + '/sign_up_designer.html');
 })
 
@@ -134,6 +134,11 @@ app.get('/patientlist', function(req, res) {
   var patientsUnr = myDB.collection('patients').find({status: "unreviewed"});
   var patientsAcc = myDB.collection('patients').find({status: "accepted"});
   var patientsRej = myDB.collection('patients').find({status: "rejected"});
+
+  var designersUnr = myDB.collection('designers').find({status: "unreviewed"});
+  var designersAcc = myDB.collection('designers').find({status: "accepted"});
+  var designersRej = myDB.collection('designers').find({status: "rejected"});
+
   patientsUnr.toArray(function (err, patients1) {
     if (err)
     return console.log(err);
@@ -152,20 +157,43 @@ app.get('/patientlist', function(req, res) {
         return console.log(err);
 
         rejectedPatients = patients3;
-        res.render('patientlist.ejs', {list: unrPat, list1: patients2, list2: patients3});
+
+        designersUnr.toArray(function (err, designers1) {
+          if (err)
+          return console.log(err);
+
+          unrDesigners = designers1;
+
+          designersAcc.toArray(function (err, designers2) {
+            if (err)
+            return console.log(err);
+
+            acceptedDesigners = designers2;
+
+            designersRej.toArray(function (err, designers3) {
+              if (err)
+              return console.log(err);
+
+              rejectedDesigners = designers3;
+
+              res.render('patientlist.ejs', {list: unrPat, list1: patients2, list2: patients3,
+                    list3: unrDesigners, list4: acceptedDesigners, list5: rejectedDesigners});
+            });
+          });
+        });
       });
     });
   });
 });
 
 // This will get a list usernames and passwords for the admin login
-app.get('/adminlogin', function(req, res) {
+app.get('/adminLogin', function(req, res) {
   var adminLog = myDB.collection('admin').find();
   adminLog.toArray(function (err, admin) {
     if (err)
     return console.log(err);
     console.log(admin)
-    res.render('/adminlogin.ejs', {list: admin});
+    res.render('adminLogin.ejs', {list: admin});
   });
 });
 
