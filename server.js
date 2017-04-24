@@ -14,7 +14,7 @@ var http = httpModule.Server(app);
 // Tells app that pictures, etc are located in folder 'assets'
 app.use(express.static('assets'));
 app.use(bodyParser.urlencoded({extended: true}));
-//trying something out, don't be mad!
+//bypass folders and allow to access files directly in the directory
 app.use('/', express.static(__dirname));
 function responder(req, res) {
   // Sending a file to the user's browser
