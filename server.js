@@ -86,6 +86,7 @@ var PatId;
 
 app.post('/Review', (req, res) => {
   Pat = (req.body);
+  console.log(Pat);
   //<<<<<<< Updated upstream
   PatId = Pat.id;
 

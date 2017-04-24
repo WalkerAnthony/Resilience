@@ -54,7 +54,7 @@
                  readonly value="<%= list[i].FirstName %> <%= list[i].LastName %>">
                  <input type="hidden" name="status" value="unreviewed">
                  <input type="hidden" name="num" value="<%= i %>">
-                 <button type="button" id= <%= 'view' + i %> onclick="viewPatient(this)">View</button>
+                 <button type="button" id= <%= 'view' + i %> onclick="viewPatient(this,'unreviewed')">View</button>
                </form>
             </li>
       <% } %>
@@ -64,13 +64,13 @@
     <ul>
       <% for(i = 0; i < list1.length; i++) { %>
             <li>
-                <form id="<%= 'form'+i %>" action="/Review" method="post">
-                  <input type="hidden" id="<%= 'id_id'+i %>" value="<%=list1[i]._id%>">
+                <form id="<%= 'a_form'+i %>" action="/Review" method="post">
+                  <input type="hidden" name="id" id="<%= 'id_id'+i %>" value="<%=list1[i]._id%>">
                   <input type="text" name="pacc_name" id="<%= 'pacc_name'+i %>"
                   readonly value="<%= list1[i].FirstName %> <%= list1[i].LastName %>">
                   <input type="hidden" name="status" value="approve">
                   <input type="hidden" name="num" value="<%= i %>">
-                  <button type="button" id= <%= 'view' + i %> onclick="viewPatient(this)">View</button>
+                  <button type="button" id= <%= 'view' + i %> onclick="viewPatient(this, 'accepted')">View</button>
                </form>
             </li>
       <% } %>
@@ -86,7 +86,7 @@
             readonly value="<%= list2[i].FirstName %> <%= list2[i].LastName %>">
             <input type="hidden" name="status" value="rejected">
             <input type="hidden" name="num" value="<%= i %>">
-            <button type="button" id= <%= 'view' + i %> onclick="viewPatient(this)">View</button>
+            <button type="button" id= <%= 'view' + i %> onclick="viewPatient(this, 'rejected')">View</button>
           </li>
       <% } %>
     </ul>
@@ -147,13 +147,25 @@
     </div>
 
     <script type="text/javascript">
-      function viewPatient(button) {
+      function viewPatient(button, status) {
         var num = button.id.match(/\d+/)[0];
         console.log(num);
-        var form = document.getElementById('form'+num);
+        var form;
+        console.log(status);
+        if (status == 'unreviewed') {
+          form = document.getElementById('form'+num);
+        }
+        else if (status == 'accepted') {
+          form = document.getElementById('a_form'+num);
+        }
+        else {
+          form = document.getElementById('r_form'+num);
+        }
         form.submit();
+        console.log(form);
         console.log('submitted form');
       }
+
     </script>
 </body>
 </html>
