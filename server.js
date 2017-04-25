@@ -105,6 +105,30 @@ app.post('/approve', (req, res) => {
   console.log("worked");
 });
 
+app.post('/rejected', (req, res) => {
+  myDB.collection('patients').update({_id:ObjectId(PatId)},{$set:{'status':'rejected'}});
+  console.log("worked");
+});
+
+
+// Have to create a new app.post for designers 
+
+// app.post('/approve', (req, res) => {
+//   myDB.collection('designers').update({_id:ObjectId(PatId)},{$set:{'status':'accepted'}});
+//   console.log("worked");
+// });
+//
+// app.post('/rejected', (req, res) => {
+//   myDB.collection('designers').update({_id:ObjectId(PatId)},{$set:{'status':'rejected'}});
+//   console.log("worked");
+// });
+
+
+
+
+
+
+
 app.get('/patient_page_post-login', (req, res) => {
   res.sendFile(__dirname + '/patient_page_post-login.html');
 })
