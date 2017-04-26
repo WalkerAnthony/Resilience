@@ -22,25 +22,7 @@ function responder(req, res) {
   console.log('got a request');
 };
 
-//This is a function to update the status of the Patient Profile
-// //function review(choice){
-//   if(choice = 'accept'){
-//     db.collection.update(
-//       {_id: patient._id});
-//       {
-//         $rename:
-//           { 'status' : 'accepted' }
-//       }
-//     }
-//   if(choice = 'reject'){
-//     db.collection.update(
-//       {_id: patient._id})
-//       {
-//         $rename:
-//           { 'status' : 'rejected'}
-//         }
-//     }
-// };
+
 
 // Get request to / is given to funtion 'responder'
 app.get('/', responder);
@@ -63,6 +45,10 @@ app.get('designerLogin', (req, res) => {
 
 app.get('Review', (req, res) => {
   res.sendFile(__dirname + '/Review.ejs')
+});
+
+app.get('DesReview', (req, res) => {
+  res.sendFile(__dirname + '/DesReview.ejs')
 });
 
 app.get('/sign_up_designer', (req, res) => {
@@ -111,17 +97,35 @@ app.post('/rejected', (req, res) => {
 });
 
 
-// Have to create a new app.post for designers 
 
-// app.post('/approve', (req, res) => {
-//   myDB.collection('designers').update({_id:ObjectId(PatId)},{$set:{'status':'accepted'}});
-//   console.log("worked");
-// });
-//
-// app.post('/rejected', (req, res) => {
-//   myDB.collection('designers').update({_id:ObjectId(PatId)},{$set:{'status':'rejected'}});
-//   console.log("worked");
-// });
+var Des;
+var DesId;
+app.post('/DesReview', (req, res) => {
+  Des = (req.body);
+  console.log(Des);
+  //<<<<<<< Updated upstream
+  DesId = Des.id;
+
+  var record = myDB.collection('designers').find(ObjectId(DesId));
+  record.toArray(function (err, designerRec) {
+    if (err)
+    return console.log(err);
+    console.log("selected designer");
+    console.log(designerRec);
+    res.render('DesReview.ejs', {designer: designerRec[0]});
+  });
+});
+
+
+app.post('/D_approve', (req, res) => {
+  myDB.collection('designers').update({_id:ObjectId(DesId)},{$set:{'status':'accepted'}});
+  console.log("worked");
+});
+
+app.post('/D_rejected', (req, res) => {
+  myDB.collection('designers').update({_id:ObjectId(DesId)},{$set:{'status':'rejected'}});
+  console.log("worked");
+});
 
 
 
