@@ -1,0 +1,187 @@
+.about{
+  width:calc(100% - 40px);
+  width:-webkit-calc(100% - 40px);
+  width:-moz-calc(100% - 40px);
+  /*background:#fff;*/
+  max-width:300px;
+  color:#00A69C;
+  right:0;
+  left:0;
+  margin:auto;
+  text-align:center;
+  padding:50px;
+  position:absolute;
+  top:75%;
+  transform:translateY(-50%);
+  -webkit-transform:translateY(-50%);
+  -moz-transform:translateY(-50%)
+}
+#logo img{
+  height: 100px;
+}
+#teamButton, #aboutButton, #pReviewButton img{
+
+  max-width: 100%;
+  background-color: white;
+  height: auto;
+  border-color: white;
+
+}
+.socks{
+
+}
+.center {
+    /*position: absolute;*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+}
+.logo{
+  width:calc(100% - 40px);
+  width:-webkit-calc(100% - 40px);
+  width:-moz-calc(100% - 40px);
+  background:#fff;
+  max-width:300px;
+  right:0;
+  left:0;
+  margin:auto;
+  text-align:center;
+  padding:10px;
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  -webkit-transform:translateY(-50%);
+  -moz-transform:translateY(-50%)
+
+}
+section#logo{
+  height:100px;
+  position:fixed;
+}
+
+body,html{
+  margin:0;
+  height:100%;
+
+}
+*{
+  transition:all .2s ease;
+  -webkit-transition:all .2s ease;
+  -moz-transition:all .2s ease;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box
+}
+.cf:before,.cf:after{
+  clear:both;
+  content:'';
+  display:table
+  }
+
+.container{
+  width:100%;
+  height:100%;
+  box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box
+}
+small{
+  padding:10px 0;
+  font:12px Muli,arial,sans-serif
+  }
+h2,h3{
+  font:700 36px Muli,Helvetica,arial,sans-serif;
+  text-align:center;
+  padding:20px 0;
+  color:#00A69C;
+}
+h3{
+  padding:0;
+  color:#00A69C;
+}
+a{
+  color:#00A69C;
+  text-decoration:none;
+  font:16px Muli,Helvetica,arial,sans-serif
+  }
+p{
+  font:16px Muli,Helvetica,arial,sans-serif;
+  padding:10px 0;
+  color:#00A69C;
+  }
+label{
+  font:20px Muli,Helvetica,arial,sans-serif;
+  padding:0;
+  padding-top:20px;
+  color:#00A69C;
+  }
+
+h1{
+  font:bold 48px 'Trebuchet MS',arial,sans-serif;
+  text-transform:uppercase;
+  color:#00A69C;
+}
+.wrap{
+  padding:0 20px;
+  margin:0 20px;
+  max-width:1000px;
+  margin:auto;
+  height:100%
+  }
+.right{
+  text-align:center
+  }
+.right a{
+  border:3px solid #00A69C;
+  border-radius:40px;
+  -webkit-border-radius:40px;
+  -moz-border-radius:40px;
+  display:inline-block;
+  width:auto
+  }
+
+.split.opening img{
+  top:50px
+  }
+
+.line{
+  text-align:center;
+  margin:auto;
+  display:block;
+  color:#000;
+  text-transform:none;
+  margin:auto;
+  right:0;
+  left:0;
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  -webkit-transform:translateY(-50%);
+  -moz-transform:translateY(-50%)
+  }
+.line img{
+  width:200px
+}
+#about{
+  height:400px;
+  position:relative
+  }
+.video{
+    position: center;
+  }
+.about{
+  width:calc(100% - 40px);
+  width:-webkit-calc(100% - 40px);
+  width:-moz-calc(100% - 40px);
+  background:#fff;
+  max-width:500px;
+  right:0;
+  left:0;
+  margin:auto;
+  text-align:center;
+  padding:30px;
+  position:absolute
+  }

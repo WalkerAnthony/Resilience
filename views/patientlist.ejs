@@ -8,20 +8,164 @@
 </head>
 
 <body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="resilienceMain">Resilience Project</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="resilienceMain">Home</a></li>
+          <li><a href="about">About</a></li>
+          <li><a href = "patient_page_post-login">Patient Profile</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Nav header</li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <br><br>
 
-  <div>
-    <p><a href = "resilienceMain">Back to Resilience home</a>.</p>
-  </div>
+  <h1> Patient List: </h1>
 
-  <h1> Patients </h1>
-  <ul>
-    <% for(i = 0; i < list; i++) { %>
-        <li>
-          <%=  i  %>
-        </li>
+    <h3> Unreviewed: </h3>
+    <ul>
+      <% for(i = 0; i < list.length; i++) { %>
+          <li>
+              <form id="<%= 'form'+i %>" action="/Review" method="post">
+                <input type="hidden" name="id" id="<%= 'id_id'+i %>" value="<%=list[i]._id%>">
+                 <input type="text" name="pun_name" id="<%= 'pun_name'+i %>"
+                 readonly value="<%= list[i].FirstName %> <%= list[i].LastName %>">
+                 <input type="hidden" name="status" value="unreviewed">
+                 <input type="hidden" name="num" value="<%= i %>">
+                 <button type="button" id= <%= 'view' + i %> onclick="viewPatient(this,'unreviewed')">View</button>
+               </form>
+            </li>
+      <% } %>
+    </ul>
 
-    <% } %>
-  </ul>
+    <h3> Accepted: </h3>
+    <ul>
+      <% for(i = 0; i < list1.length; i++) { %>
+            <li>
+                <form id="<%= 'a_form'+i %>" action="/Review" method="post">
+                  <input type="hidden" name="id" id="<%= 'id_id'+i %>" value="<%=list1[i]._id%>">
+                  <input type="text" name="pacc_name" id="<%= 'pacc_name'+i %>"
+                  readonly value="<%= list1[i].FirstName %> <%= list1[i].LastName %>">
+                  <input type="hidden" name="status" value="approve">
+                  <input type="hidden" name="num" value="<%= i %>">
+                  <button type="button" id= <%= 'view' + i %> onclick="viewPatient(this, 'accepted')">View</button>
+               </form>
+            </li>
+      <% } %>
+    </ul>
 
+    <h3> Rejected: </h3>
+    <ul>
+      <% for(i = 0; i < list2.length; i++) { %>
+          <li>
+            <form id="<%= 'form'+i %>" action="/Review" method="post">
+            <input type="hidden" id="<%= 'id_id'+i %>" value="<%=list1[i]._id%>">
+            <input type="text" name="prej_name" id="<%= 'prej_name'+i %>"
+            readonly value="<%= list2[i].FirstName %> <%= list2[i].LastName %>">
+            <input type="hidden" name="status" value="rejected">
+            <input type="hidden" name="num" value="<%= i %>">
+            <button type="button" id= <%= 'view' + i %> onclick="viewPatient(this, 'rejected')">View</button>
+          </li>
+      <% } %>
+    </ul>
+
+  <br><br><br>
+
+  <h1> Designer List: </h1>
+
+    <h3> Unreviewed: </h3>
+    <ul>
+      <% for(i = 0; i < list3.length; i++) { %>
+          <li>
+              <form id="<%= 'form'+i %>" action="/Review" method="post">
+                <input type="hidden" name="id" id="<%= 'id_id'+i %>" value="<%=list3[i]._id%>">
+                 <input type="text" name="dun_name" id="<%= 'dun_name'+i %>"
+                 readonly value="<%= list3[i].FirstName %> <%= list3[i].LastName %>">
+                 <input type="hidden" name="status" value="unreviewed">
+                 <input type="hidden" name="num" value="<%= i %>">
+                 <button type="button" id= <%= 'view' + i %> onclick="viewDesigners(this)">View</button>
+               </form>
+            </li>
+      <% } %>
+    </ul>
+
+    <h3> Accepted: </h3>
+    <ul>
+      <% for(i = 0; i < list4.length; i++) { %>
+            <li>
+                <form id="<%= 'form'+i %>" action="/Review" method="post">
+                  <input type="hidden" id="<%= 'id_id'+i %>" value="<%=list4[i]._id%>">
+                  <input type="text" name="dacc_name" id="<%= 'dacc_name'+i %>"
+                  readonly value="<%= list4[i].FirstName %> <%= list4[i].LastName %>">
+                  <input type="hidden" name="status" value="approve">
+                  <input type="hidden" name="num" value="<%= i %>">
+                  <button type="button" id= <%= 'view' + i %> onclick="viewDesigner(this)">View</button>
+               </form>
+            </li>
+      <% } %>
+    </ul>
+
+    <h3> Rejected: </h3>
+    <ul>
+      <% for(i = 0; i < list5.length; i++) { %>
+          <li>
+            <form id="<%= 'form'+i %>" action="/Review" method="post">
+            <input type="hidden" id="<%= 'id_id'+i %>" value="<%=list5[i]._id%>">
+            <input type="text" name="drej_name" id="<%= 'drej_name'+i %>"
+            readonly value="<%= list5[i].FirstName %> <%= list5[i].LastName %>">
+            <input type="hidden" name="status" value="rejected">
+            <input type="hidden" name="num" value="<%= i %>">
+            <button type="button" id= <%= 'view' + i %> onclick="viewDesigner(this)">View</button>
+          </li>
+      <% } %>
+    </ul>
+
+    <div>
+      <p><a href = "resilienceMain">Back to Resilience home</a>.</p>
+    </div>
+
+    <script type="text/javascript">
+      function viewPatient(button, status) {
+        var num = button.id.match(/\d+/)[0];
+        console.log(num);
+        var form;
+        console.log(status);
+        if (status == 'unreviewed') {
+          form = document.getElementById('form'+num);
+        }
+        else if (status == 'accepted') {
+          form = document.getElementById('a_form'+num);
+        }
+        else {
+          form = document.getElementById('r_form'+num);
+        }
+        form.submit();
+        console.log(form);
+        console.log('submitted form');
+      }
+
+    </script>
 </body>
 </html>

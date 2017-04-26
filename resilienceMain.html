@@ -5,25 +5,90 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
  crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <body>
-  <div>
-    <h1 class = "text-center"> Welcome to the Resilience Project! </h1>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="resilienceMain">Resilience Project</a>
+
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class = "active"><a href="resilienceMain">Home</a></li>
+          <li><a href="about">About</a></li>
+          <li><a href = "patient_page_post-login">Patient Profile</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <br><br>
+</div>
+<section id="logo">
+  <div class="logo">
+    <a href="https://www.resilience.gives/" target="_blank">
+        <img src="https://cdn.shopify.com/s/files/1/1070/1026/t/5/assets/logo-inverted.png?2131611822333824466">
+      </a>
   </div>
-  <div class="col-sm-offset-5 col-sm-2 text-center">
-    <p><h2>For Patients:</h2></p>
-    <a href = "sign_up"> <button type = "button" id = "teamButton">Sign Up</button> </a>
-    <a href = "login"> <button type = "button" id = "aboutButton">Login</button> </a>
+</section>
+<section id="about">
+    <div class="wrap">
+        <div class="about">
+            <h3>about resilience</h3>
+            <p>Resilience is about lending support to those that need it. We use our passion for fun socks to represent the individual struggle of each patient, and harness the power of community to help those that are especially financially-strapped to get the care they need.</p>
+        </div>
+    </div>
+</section>
+     <section id="about">
+         <div class="wrap">
+             <div class="about">
+                 <h3>about us</h3>
+                 <p>We are students working on a software engineering project to develop a patient and designer login portal. Using a database we give designers and patients the opportunity to create a profile for the Resilience Project.</p>
+             </div>
+         </div>
+     </section>
+    <!-- <section id ="video">
+       <video width="320" height="240" controls>
+         <source src="https://www.youtube.com/watch?v=74gdR9qPQdo">
+           <source src="https://www.youtube.com/watch?v=74gdR9qPQdo">
+             Your browser does not support the video tag.
+      </video>
+    </section>-->
+
+
+  <div class="text-center">
+    <div class="socks">
+      <p><h2>login</h2></p>
+      <a href = "sign_up_splash">
+        <button type = "button" id = "teamButton">
+          <img src="https://cdn.shopify.com/s/files/1/1070/1026/products/Cutout_-_Jack_grande.png?v=1488753524" width=100px height=150px>
+          <div align="center">sign up</div>
+        </button>
+     </a>
+    <a href = "login">
+      <button type = "button" id = "aboutButton">
+        <img src="https://cdn.shopify.com/s/files/1/1070/1026/products/Angel-cutout_grande.png?v=1487093226" width=100px height=150px>
+        <div align="center">login</div>
+      </button>
+    </a>
 
     <br><br>
-    <p><h2>For Resilience Administration:</h2></p>
-    <a href = "P_Review"> <button type = "button" id = "pReviewButton">Patient Review</button> </a>
-
-    <br><br>
-    <p><h2>Patient List (remove later)</h2></p>
-    <a href = "patientlist">Patient list</a>
-
+    <p><h2>administration</h2></p>
+    <a href = "patientlist">
+      <button type = "button" id = "pReviewButton">
+        <img src="https://cdn.shopify.com/s/files/1/1070/1026/products/Lilli_cutouts_grande.png?v=1486861935" width=100px height=150px>
+        <div align="center">review</div>
+      </button>
+    </a>
+  </div>
   </div>
 </body>
 </html>

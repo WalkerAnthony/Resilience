@@ -25,8 +25,8 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li class="active"><a href="resilienceMain">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="about">About</a></li>
+          <li><a href = "patient_page_post-login">Patient Profile</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -47,78 +47,93 @@
   <div class="container theme-showcase" role="main">
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="page-header">
-      <br>
-      <h1>Jimmy McAbleton (Example Patient)</h1>
-    </div>
-    <p>
+    <br>
+      <p>
       <img data-src="408442_399911803355418_839460775_n.jpg" class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera"
       style="float:left;width:350px;height:350px;">
     </p>
 
+<!-- this is where the undefined is happening
+    because there needs to be a defined way of
+    accessing the info seperately in order to display it-->
 
     <div class="jumbotron">
-      <h1>Jimmy McAbleton</h1>
+      <h1>
+        <%= patient.FirstName + " " + patient.LastName %>
+      </h1>
       <p> Age: 45 <br>
-          Prognosis: Bad web developer <br>
-          Treatment Length: Not long enough</p>
+          Prognosis: <%= patient.Diagnosis %> <br>
+          Day of Diagnosis: <%= patient.DOD %> </p>
     </div>
+  <!-- Could also be seperate boxes for each piece of info but we can decide -->
 
-  <!-- Not sure how to go about really displaying this info
-       Could also be seperate boxes for each piece of info but we can decide -->
-
+    <br>
     <div class="page-header">
       <br>
-      <h2>Doctor Info:</h2>
+      <h2>Doctor Info</h2>
     </div>
     <div class="well">
-      <p> Name: Mr. Dr. Patrick <br>
-          Contact: 1-800-GITGUD-SCRUB <br>
-          Hospital: Weenie Hut General <br>
+      <p> Name: <%= patient.Doc %> <br>
+          Contact: <%= patient.DocPhone %> <br>
+          Hospital: <%= patient.HOT %> <br>
       </p>
+
     </div>
 
     <div class="page-header">
-      <h2>Bio:</h2>
+      <h2>Bio</h2>
     </div>
+
     <div class="well">
-      <p> Poor Jimmy is a bad coder and is in need of some nice socks. This is an example of where the bio info would go! </p>
+      <p> <%= patient.Story %> </p>
     </div>
 
 
     <div class="page-header">
-      <h1>Would you like to accept or reject this patient?</h1>
+      <h1>Would you like to accept or reject</h1>
     </div>
     <p>
-      <button type="button" class="btn btn-lg btn-accept">Accept</button>
-      <button type="button" class="btn btn-lg btn-reject">Reject</button>
+      <form id="approve" class="" action="/approve" method="post">
+        <button type="button" class="btn btn-lg btn-accept" onclick="review('accept')">Accept</button>
+      </form>
+      <form id= "rejected" class="" action="/rejected" method="post">
+        <button type="button" class="btn btn-lg btn-reject" onclick="review('reject')">Reject</button>
+      </form>
+      <br>
     </p>
     </div> <!-- /container -->
 
   <script>
-    // Connect to MongoDB
-    // Need the URL or whatever to connect to the database
-    var MongoClient = require('mongodb').MongoClient, format = require('util').format;
 
-    MongoClient.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
-      if(err) throw err;
+  function review(choice){
+    if(choice == 'accept'){
+      console.log('inside');
 
-      var collection = db.collection('test_insert');
-      collection.insert({a:2}, function(err, docs) {
+      var f = document.getElementById("approve");
+      f.submit();
+    }
+    if(choice == 'reject'){
+      console.log('inside');
 
-        collection.count(function(err, count) {
-          console.log(format("count = %s", count));
-        });
+      var f = document.getElementById("rejected");
+      f.submit();
+  }
 
-        // Locate all the entries using find
-        collection.find().toArray(function(err, results) {
-          console.dir(results);
-          // Let's close the db
-          db.close();
-        });
-      });
-    })
-  </script>
+  // function reviewDes(choice){
+  //   if(choice == 'accept'){
+  //     console.log('inside');
+  //
+  //     var f = document.getElementById("approve");
+  //     f.submit();
+  //   }
+  //   if(choice == 'reject'){
+  //     console.log('inside');
+  //
+  //     var f = document.getElementById("rejected");
+  //     f.submit();
+  // }
+};
+</script>
 
   <!-- Bootstrap core JavaScript
   ================================================== -->
