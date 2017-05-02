@@ -239,7 +239,7 @@ app.post('/authDesigner', (req, res) => {
       res.redirect('/post_designer_patient_login');
     }
     else{
-      res.redirect('/');
+      res.redirect('/designerLogin');
     }
   });
 });
@@ -251,7 +251,7 @@ app.post('/authPatient', (req, res) => {
       res.redirect('/post_designer_patient_login');
     }
     else{
-      res.redirect('/login');
+      res.redirect('/patientLogin');
     }
   });
 });
