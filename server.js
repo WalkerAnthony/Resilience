@@ -227,6 +227,27 @@ app.get('/adminLogin', function(req, res) {
     res.render('adminLogin.ejs', {list: admin});
   });
 });
+app.post('/authPatient', (req, res) => {
+  console.log(req.body);
+
+  var patientLog = myDB.collection('patients').findOne(req.body, function(err, doc){
+    if(doc != null){
+      res.redirect('/');
+    }
+    else{
+      res.redirect('/');
+    }
+  });
+});
+app.get('/patientLogin', function(req, res) {
+  var adminLog = myDB.collection('patients').find();
+  adminLog.toArray(function (err, patients) {
+    if (err)
+    return console.log(err);
+    console.log(patienst)
+    res.render('patientLogin.ejs', {list: patients});
+  });
+});
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/sign_up.html');
