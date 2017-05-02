@@ -63,6 +63,10 @@ app.get('/sign_up_splash', (req, res) => {
   res.sendFile(__dirname + '/sign_up_splash.html');
 });
 
+app.get('/post_designer_patient_login', (req, res) => {
+  res.sendFile(__dirname + '/post_designer_patient_login.html');
+})
+
 // Global variables
 var unrPat;
 var accPat;
@@ -227,18 +231,31 @@ app.get('/adminLogin', function(req, res) {
     res.render('adminLogin.ejs', {list: admin});
   });
 });
-app.post('/authPatient', (req, res) => {
+app.post('/authDesigner', (req, res) => {
   console.log(req.body);
 
-  var patientLog = myDB.collection('patients').findOne(req.body, function(err, doc){
+  var designerLog = myDB.collection('designers').findOne(req.body, function(err, doc){
     if(doc != null){
-      res.redirect('/');
+      res.redirect('/post_designer_patient_login');
     }
     else{
       res.redirect('/');
     }
   });
 });
+app.post('/authPatient', (req, res) => {
+  console.log(req.body);
+
+  var patientLog = myDB.collection('patients').findOne(req.body, function(err, doc){
+    if(doc != null){
+      res.redirect('/post_designer_patient_login');
+    }
+    else{
+      res.redirect('/login');
+    }
+  });
+});
+
 app.get('/patientLogin', function(req, res) {
   var adminLog = myDB.collection('patients').find();
   adminLog.toArray(function (err, patients) {
@@ -291,20 +308,7 @@ app.post('/authAdmin', (req, res) => {
   });
 });
 
-//authenicates the designer user by getting the user name and password from the req
-//and checking the data with the database
-app.post('/authDesigner', (req, res) => {
-  console.log(req.body);
 
-  var designerLog = myDB.collection('designers').findOne(req.body, function(err, doc){
-    if(doc != null){
-      res.redirect('/patientlist');
-    }
-    else{
-      res.redirect('/designerLogin');
-    }
-  });
-});
 
 //Respond to GET request for target '/login'
 app.get('/login', (req, res) => {
